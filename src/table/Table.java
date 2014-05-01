@@ -20,27 +20,22 @@ public class Table {
     }
 
     public void addRow(Row row) {
+        assert row.assertStructure(structure);
         rows.add(row);
     }
 
-    public Iterable<Row> query(String[] columnName) {
-        return rows;
+    public Iterable<Row> query(String[] columnName, Condition condition, Iterable<String> columnNameList) {
+        return filter(rows, condition, columnNameList);
     }
 
-    private List<Row> filter(List<Row> currentRows, Condition condition) {
+    private List<Row> filter(List<Row> currentRows, Condition condition, Iterable<String> columnNameList) {
         List<Row> newRows = new ArrayList<Row>();
         for (Row currentRow : currentRows) {
-            if (currentRow.apply(condition)) newRows.add(currentRow);
+            if (currentRow.apply(condition)) newRows.add(currentRow.filter(columnNameList));
         }
         return newRows;
     }
 
-    public Column getColumn(String name) {
-        for (Column column : structure) {
-            if (column.isNamed(name)) return column;
-        }
-        return null;
-    }
 
 //    public Iterable<Row> queryOverAnd(String[] columnName, Condition[] conditions) {
 //        List<Row> currentRows = rows;
