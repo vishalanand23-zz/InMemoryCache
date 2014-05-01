@@ -1,7 +1,11 @@
 package dataTypes;
 
 public class IntType implements DataType {
-    Integer data;
+    private final Integer data;
+
+    public IntType(Integer integer) {
+        data = integer;
+    }
 
     @Override
     public <T extends DataType> boolean apply(Condition<T> condition) {

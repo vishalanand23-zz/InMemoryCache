@@ -17,7 +17,7 @@ public class Column<T extends DataType> {
         return name.equals(columnsName);
     }
 
-    <T extends DataType> boolean apply(Condition<T> condition) {
+    public <S extends T> boolean apply(Condition<S> condition) {
         return value.apply(condition);
     }
 }

@@ -15,7 +15,7 @@ public class Condition<T extends DataType> {
         return columnName;
     }
 
-    enum Operator {
+    public enum Operator {
         Greater, Smaller, Equals, GreaterEquals, SmallerEquals
     }
 }

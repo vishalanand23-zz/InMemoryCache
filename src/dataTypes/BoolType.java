@@ -1,7 +1,11 @@
 package dataTypes;
 
 public class BoolType implements DataType {
-    Boolean data;
+    private final Boolean data;
+
+    public BoolType(Boolean data) {
+        this.data = data;
+    }
 
     @Override
     public <T extends DataType> boolean apply(Condition<T> condition) {
