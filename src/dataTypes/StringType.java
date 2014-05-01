@@ -1,8 +1,5 @@
 package dataTypes;
 
-/**
- * Created by anandv on 01/05/14.
- */
 public class StringType implements DataType {
     String data;
 

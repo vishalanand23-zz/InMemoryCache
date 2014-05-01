@@ -3,9 +3,6 @@ package dataHolders;
 import dataTypes.Condition;
 import dataTypes.DataType;
 
-/**
- * Created by anandv on 29/04/14.
- */
 public class Column<T extends DataType> {
 
     public final String name;

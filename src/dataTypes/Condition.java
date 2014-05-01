@@ -1,8 +1,5 @@
 package dataTypes;
 
-/**
- * Created by anandv on 29/04/14.
- */
 public class Condition<T extends DataType> {
     public final T value;
     public final Operator operator;

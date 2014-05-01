@@ -1,8 +1,5 @@
 package dataTypes;
 
-/**
- * Created by anandv on 01/05/14.
- */
 public class IntType implements DataType {
     Integer data;
 

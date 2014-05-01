@@ -6,9 +6,6 @@ import dataTypes.DataType;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by anandv on 27/04/14.
- */
 public class Row {
 
     private final List<Column> columns;
