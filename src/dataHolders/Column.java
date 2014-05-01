@@ -1,9 +1,12 @@
 package dataHolders;
 
+import dataHolders.dataTypes.Condition;
+import dataHolders.dataTypes.DataType;
+
 /**
  * Created by anandv on 29/04/14.
  */
-public abstract class Column<T> {
+public class Column<T extends DataType> {
 
     public final String name;
     public final T value;
@@ -13,9 +16,11 @@ public abstract class Column<T> {
         this.value = value;
     }
 
-    public boolean isNamed(String name) {
-        return this.name.equals(name);
+    boolean isNamed(String columnsName) {
+        return name.equals(columnsName);
     }
 
-    public abstract boolean apply(Condition condition);
+    <T extends DataType> boolean apply(Condition<T> condition) {
+        return value.apply(condition);
+    }
 }

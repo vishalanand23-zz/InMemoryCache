@@ -1,5 +1,8 @@
 package dataHolders;
 
+import dataHolders.dataTypes.Condition;
+import dataHolders.dataTypes.DataType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,36 +19,35 @@ public class Table {
         assert nullValuesInStructure();
     }
 
-    private boolean nullValuesInStructure() {
-        return false;
-    }
-
     public void addRow(Row row) {
         assert assertStructure(row);
         rows.add(row);
+    }
+
+    public <T extends DataType> Iterable<Row> query(Condition<T> condition, String[] columnNameList) {
+        return filter(rows, condition, columnNameList);
+    }
+
+    private <T extends DataType> List<Row> filter(List<Row> currentRows, Condition<T> condition, String[] columnNameList) {
+        List<Row> newRows = new ArrayList<Row>();
+        for (Row currentRow : currentRows) {
+            if (currentRow.apply(condition)) newRows.add(currentRow.filterColumns(columnNameList));
+        }
+        return newRows;
     }
 
     private boolean assertStructure(Row row) {
         return false;
     }
 
-    public Iterable<Row> query(String[] columnName, Condition condition, Iterable<String> columnNameList) {
-        return filter(rows, condition, columnNameList);
+    private boolean nullValuesInStructure() {
+        return false;
     }
-
-    private List<Row> filter(List<Row> currentRows, Condition condition, Iterable<String> columnNameList) {
-        List<Row> newRows = new ArrayList<Row>();
-        for (Row currentRow : currentRows) {
-            if (currentRow.apply(condition)) newRows.add(currentRow.filter(columnNameList));
-        }
-        return newRows;
-    }
-
 
 //    public Iterable<Row> queryOverAnd(String[] columnName, Condition[] conditions) {
 //        List<Row> currentRows = rows;
 //        for (Condition condition : conditions) {
-//            currentRows = filter(currentRows, condition);
+//            currentRows = filterColumns(currentRows, condition);
 //        }
 //        return currentRows;
 //    }
@@ -53,7 +55,7 @@ public class Table {
 //    public Iterable<Row> queryOverOr(Condition[] conditions) {
 //        Set<Row> currentRows = new TreeSet<Row>();
 //        for (Condition condition : conditions) {
-//            currentRows.addAll(filter(rows, condition));
+//            currentRows.addAll(filterColumns(rows, condition));
 //        }
 //        return currentRows;
 //    }

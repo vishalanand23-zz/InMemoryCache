@@ -1,5 +1,8 @@
 package dataHolders;
 
+import dataHolders.dataTypes.Condition;
+import dataHolders.dataTypes.DataType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,7 @@ public class Row {
         this.columns = columns;
     }
 
-    public Row filter(Iterable<String> columnsName) {
+    Row filterColumns(String[] columnsName) {
         List<Column> newColumns = new ArrayList<Column>();
         for (Column value : columns) {
             for (String columnName : columnsName) {
@@ -27,10 +30,10 @@ public class Row {
         return new Row(newColumns);
     }
 
-    public boolean apply(Condition condition) {
+    <T extends DataType> boolean apply(Condition<T> condition) {
         Column rightColumn = null;
         for (Column column : columns) {
-            if (column.isNamed(condition.columnName)) {
+            if (column.isNamed(condition.getColumnName())) {
                 rightColumn = column;
                 break;
             }
