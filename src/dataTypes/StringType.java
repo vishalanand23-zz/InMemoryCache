@@ -1,17 +1,17 @@
-package dataHolders.dataTypes;
+package dataTypes;
 
 /**
  * Created by anandv on 01/05/14.
  */
-public class BoolType implements DataType {
-    Boolean data;
+public class StringType implements DataType {
+    String data;
 
     @Override
     public <T extends DataType> boolean apply(Condition<T> condition) {
-        BoolType value = (BoolType) condition.value;
+        StringType value = (StringType) condition.value;
         switch (condition.operator) {
             case Equals:
-                return this.data == value.data;
+                return this.data.compareTo(value.data) == 0;
         }
         return false;
     }

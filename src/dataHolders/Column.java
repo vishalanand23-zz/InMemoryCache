@@ -1,7 +1,7 @@
 package dataHolders;
 
-import dataHolders.dataTypes.Condition;
-import dataHolders.dataTypes.DataType;
+import dataTypes.Condition;
+import dataTypes.DataType;
 
 /**
  * Created by anandv on 29/04/14.

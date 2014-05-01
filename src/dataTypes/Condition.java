@@ -1,4 +1,4 @@
-package dataHolders.dataTypes;
+package dataTypes;
 
 /**
  * Created by anandv on 29/04/14.

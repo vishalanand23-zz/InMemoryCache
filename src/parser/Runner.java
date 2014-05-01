@@ -1,7 +1,7 @@
 package parser;
 
-import dataHolders.dataTypes.Condition;
-import dataHolders.dataTypes.IntType;
+import dataTypes.Condition;
+import dataTypes.IntType;
 
 /**
  * Created by anandv on 01/05/14.
