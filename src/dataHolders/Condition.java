@@ -1,4 +1,4 @@
-package column;
+package dataHolders;
 
 /**
  * Created by anandv on 29/04/14.

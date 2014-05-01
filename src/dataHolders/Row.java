@@ -1,7 +1,4 @@
-package row;
-
-import column.Column;
-import column.Condition;
+package dataHolders;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +37,5 @@ public class Row {
         }
         assert rightColumn != null;
         return rightColumn.apply(condition);
-    }
-
-    public boolean assertStructure(List<Column> structure) {
-        return false;
     }
 }

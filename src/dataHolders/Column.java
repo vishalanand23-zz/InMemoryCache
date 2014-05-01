@@ -1,4 +1,4 @@
-package column;
+package dataHolders;
 
 /**
  * Created by anandv on 29/04/14.
@@ -15,10 +15,6 @@ public abstract class Column<T> {
 
     public boolean isNamed(String name) {
         return this.name.equals(name);
-    }
-
-    public boolean equalsTo(T t) {
-        return value.equals(t);
     }
 
     public abstract boolean apply(Condition condition);

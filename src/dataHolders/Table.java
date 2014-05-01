@@ -1,8 +1,4 @@
-package table;
-
-import column.Column;
-import column.Condition;
-import row.Row;
+package dataHolders;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +13,20 @@ public class Table {
 
     public Table(List<Column> structure) {
         this.structure = structure;
+        assert nullValuesInStructure();
+    }
+
+    private boolean nullValuesInStructure() {
+        return false;
     }
 
     public void addRow(Row row) {
-        assert row.assertStructure(structure);
+        assert assertStructure(row);
         rows.add(row);
+    }
+
+    private boolean assertStructure(Row row) {
+        return false;
     }
 
     public Iterable<Row> query(String[] columnName, Condition condition, Iterable<String> columnNameList) {
